@@ -41,11 +41,34 @@ public class Question1 {
         printNode(newHead);
     }
 
-    public static void main(String[] args) {
-        System.out.println("Hello World");
-        Question1 program = new Question1();
-        program.runReverse();
+    public String reverseAllWords(String str) {
+        String[] temp = str.split(" ");
+        String result = "";
+        for( int i = temp.length-1; i >= 0; i-- ) {
+            result += temp[i] + " ";
+        }
+        System.out.println(result);
+        return result;
+    }
 
+    public void reverseString(String str) {
+        System.out.println("Starting String: " + str);
+        String result = "";
+        String[] arr = str.split("");
+        for(int i = arr.length - 1; i >= 0; i--) {
+            result += arr[i];
+        }
+
+        System.out.println(result);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Running question 1");
+        Question1 program = new Question1();
+        //program.runReverse();
+
+
+        program.reverseString("Testing");
 
     }
 }
