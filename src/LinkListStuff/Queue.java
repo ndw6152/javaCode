@@ -53,6 +53,10 @@ public class Queue<T>{
     }
 
 
+    public Node getTail() {
+        return tail;
+    }
+
 
 
 
