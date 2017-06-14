@@ -54,21 +54,34 @@ public class Btree {
 
     public void bfsTraversal() {
         Node temp = root;
-        Queue<Node> q = new Queue<>();
+        Queue<Node> currentLevel = new Queue<>();
+        Queue<Node> nextLevel = new Queue<>();
 
-        q.push(temp);
+        currentLevel.push(temp);
 
-        while(q.getTail() != null) {
+        while(currentLevel.getTail() != null) {
+            while(currentLevel.getTail() != null) {
+                LinkListStuff.Node val = currentLevel.pop();
+                if(val.value != null) {
+                    Node content = (Node)val.value;
 
-            LinkListStuff.Node val = q.pop();
-            Node content = (Node)val.value;
+                    System.out.print(content.value + " ");
 
-            System.out.print(content.value + " - ");
-            if(content.left != null)
-                q.push(content.left);
-            if(content.right != null)
-                q.push(content.right);
+                    nextLevel.push(content.left);
+
+
+                    nextLevel.push(content.right);
+                }
+                else {
+                    System.out.print("- ");
+                }
+
+            }
+            System.out.println();
+            currentLevel = nextLevel;
+            nextLevel = new Queue<>();
         }
+
     }
 
 
