@@ -3,7 +3,7 @@ package LinkListStuff;
 /**
  * Created by Anonealio on 6/13/2017.
  */
-public class Queue {
+public class Queue<T>{
 
 
     private Node head;
@@ -14,18 +14,15 @@ public class Queue {
 
     }
 
-    public void push(Node n) {
-        if(head == null) {
-            head = n;
+    public void push(T n) {
+        if(head == null && tail == null) {
+            head = new Node<>(n, null);
+            tail = head;
             head.next = null;
         }
-        if(tail == null) {
-            tail = n;
-            tail.next = null;
-        }
         else {
-            tail.next = n;
-            tail = n;
+            tail.next = new Node<>(n, null);
+            tail = tail.next;
             tail.next = null;
         }
     }
@@ -60,18 +57,20 @@ public class Queue {
 
 
     public static void main(String[] args) {
-        Queue q = new Queue();
+        Queue<Integer> q = new Queue<>();
 
-        q.push(new Node<>(1, null));
-        q.push(new Node<>(2, null));
-        q.push(new Node<>(3, null));
-        q.push(new Node<>(4, null));
+        q.push(1);
+        q.push(2);
+        q.push(3);
+        q.push(4);
 
         q.printQueue();
 
         q.pop();
         q.pop();
+
         q.printQueue();
+        q.push(1000);
         q.pop();
         q.pop();
         q.printQueue();
