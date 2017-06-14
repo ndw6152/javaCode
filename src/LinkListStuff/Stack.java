@@ -41,6 +41,8 @@ public class Stack {
             temp = temp.next;
         }
         System.out.println();
+
+        System.out.println("head: " + head.value);
     }
 
     public static void main(String[] args) {
