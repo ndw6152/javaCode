@@ -4,7 +4,7 @@ package LinkListStuff;
  *
  * Created by Anonealio on 6/8/2017.
  */
-public class AddTwoLinkedList {
+public class AddTwoLinkedList{
 
     public void printNode(Node n) {
         while(n != null) {
@@ -39,13 +39,13 @@ public class AddTwoLinkedList {
 
     public void addTwoLinkedList(Node a, Node b) {
 
-        Node head = new Node(-1, null);
+        Node head = new Node<>(-1, null);
         Node start = head;
         int carry = 0;
 
         while(a != null) {
 
-            int sum  = a.value + b.value;
+            int sum  = (Integer)a.value + (Integer)b.value;
             int total = sum%10 + carry;
             if(sum >= 10) {
                 carry = 1;
@@ -58,7 +58,7 @@ public class AddTwoLinkedList {
                 carry = 1;
             }
 
-            head.next = new Node(total%10, null);
+            head.next = new Node<>(total%10, null);
             head = head.next;
 
             a = a.next;
@@ -67,7 +67,7 @@ public class AddTwoLinkedList {
 
 
         while(b != null) {
-            int sum  = carry + b.value;
+            int sum  = (Integer)carry + (Integer)b.value;
             int total = sum%10;
             if(sum >= 10) {
                 carry = 1;
@@ -76,14 +76,14 @@ public class AddTwoLinkedList {
                 carry = 0;
             }
 
-            head.next = new Node(total, null);
+            head.next = new Node<>(total, null);
             head = head.next;
             b = b.next;
         }
 
 
         if(carry > 0) {
-            head.next = new Node(carry, null);
+            head.next = new Node<>(carry, null);
             head = head.next;
         }
 
@@ -91,22 +91,22 @@ public class AddTwoLinkedList {
     }
 
     public void setUpNodes() {
-        Node n3 = new Node(1, null);
-        Node n2 = new Node(1, n3);
-        Node n1 = new Node(1, n2);  // 111
+        Node n3 = new Node<>(1, null);
+        Node n2 = new Node<>(1, n3);
+        Node n1 = new Node<>(1, n2);  // 111
 
-        Node y3 = new Node(9, null);
-        Node y2 = new Node(9, y3);
-        Node y1 = new Node(9, y2);  // 999
+        Node y3 = new Node<>(9, null);
+        Node y2 = new Node<>(9, y3);
+        Node y1 = new Node<>(9, y2);  // 999
 
-        Node b4 = new Node(5, null);
-        Node b3 = new Node(9, b4);
-        Node b2 = new Node(9, b3);
-        Node b1 = new Node(9, b2);  // 5999
+        Node b4 = new Node<>(5, null);
+        Node b3 = new Node<>(9, b4);
+        Node b2 = new Node<>(9, b3);
+        Node b1 = new Node<>(9, b2);  // 5999
 
 
-        Node a2 = new Node(1, null);
-        Node a1 = new Node(1, a2);  // 11
+        Node a2 = new Node<>(1, null);
+        Node a1 = new Node<>(1, a2);  // 11
 
 
 

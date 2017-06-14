@@ -30,15 +30,15 @@ public class Queue {
         }
     }
 
-    public int pop() {
+    public Node pop() {
         if(head == tail) {
             tail = null;
         }
         if(head == null) {
-            return -1;
+            return null;
         }
         else{
-            int temp = head.value;
+            Node temp = head;
             head = head.next;
             return temp;
         }
@@ -58,21 +58,22 @@ public class Queue {
 
 
 
+
     public static void main(String[] args) {
         Queue q = new Queue();
 
-        q.push(new Node(1, null));
-        q.push(new Node(2, null));
-        q.push(new Node(3, null));
-        q.push(new Node(4, null));
+        q.push(new Node<>(1, null));
+        q.push(new Node<>(2, null));
+        q.push(new Node<>(3, null));
+        q.push(new Node<>(4, null));
 
         q.printQueue();
 
         q.pop();
         q.pop();
         q.printQueue();
-
-        q.push(new Node(1000, null));
+        q.pop();
+        q.pop();
         q.printQueue();
 
 

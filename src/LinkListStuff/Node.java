@@ -4,12 +4,12 @@ package LinkListStuff;
  *
  * Created by Anonealio on 6/5/2017.
  */
-public class Node {
+public class Node<T> {
 
-    public int value;
+    public T value;
     public Node next;
 
-    public Node(int value, Node next) {
+    public Node(T value, Node next) {
         this.value = value;
         this.next = next;
     }
