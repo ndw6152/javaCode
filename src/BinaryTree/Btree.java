@@ -25,13 +25,15 @@ public class Btree {
             root.right = null;
         }
 
-        Node tempRoot = root;
-        if(n.value < tempRoot.value) {
+        Node tempRoot = root.left;
+        Node prev = root;
+        if(tempRoot != null && n.value < tempRoot.value) {
 
-            while(tempRoot.left != null) {
+            while(tempRoot != null) {
 
                 if(n.value < tempRoot.value) {
                     tempRoot = tempRoot.left;
+                    prev = prev.left;
                 }
                 else {
                     while(tempRoot.right != null) {
@@ -39,6 +41,7 @@ public class Btree {
                             n.right = tempRoot.right;
                             n.left = null;
                             tempRoot.right = n;
+                            return;
                         }
                         else {
                             tempRoot = tempRoot.right;
@@ -49,6 +52,9 @@ public class Btree {
                     n.left = null;
                 }
             }
+            prev.left = n;
+            n.right = null;
+            n.left = null;
         }
     }
 
@@ -66,10 +72,7 @@ public class Btree {
                     Node content = (Node)val.value;
 
                     System.out.print(content.value + " ");
-
                     nextLevel.push(content.left);
-
-
                     nextLevel.push(content.right);
                 }
                 else {
@@ -94,6 +97,11 @@ public class Btree {
         Btree b = new Btree(root);
 
         b.bfsTraversal();
+        b.insert(new Node(30, null, null));
+        b.insert(new Node(35, null, null));
+        b.insert(new Node(15, null, null));
+        b.bfsTraversal();
+
 
     }
 
