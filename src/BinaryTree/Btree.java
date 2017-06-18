@@ -18,43 +18,34 @@ public class Btree {
     }
 
 
-    public void insert(Node n) {
+    public void insert(int val) {
         if(root == null) {
-            root = n;
-            root.left = null;
-            root.right = null;
+            Node temp = new Node(val, null, null);
+            root = temp;
         }
+        else {
+            insert(val, root);
+        }
+    }
 
-        Node tempRoot = root.left;
-        Node prev = root;
-        if(tempRoot != null && n.value < tempRoot.value) {
-
-            while(tempRoot != null) {
-
-                if(n.value < tempRoot.value) {
-                    tempRoot = tempRoot.left;
-                    prev = prev.left;
-                }
-                else {
-                    while(tempRoot.right != null) {
-                        if(n.value < tempRoot.right.value) {
-                            n.right = tempRoot.right;
-                            n.left = null;
-                            tempRoot.right = n;
-                            return;
-                        }
-                        else {
-                            tempRoot = tempRoot.right;
-                        }
-                    }
-                    tempRoot.right = n;
-                    n.right = null;
-                    n.left = null;
-                }
+    public void insert(int val, Node root) {
+        if(val < root.value) {
+            if(root.left == null) {
+                Node temp = new Node(val, null, null);
+                root.left = temp;
             }
-            prev.left = n;
-            n.right = null;
-            n.left = null;
+            else {
+                insert(val, root.left);
+            }
+        }
+        else{
+            if(root.right == null) {
+                Node temp = new Node(val, null, null);
+                root.right = temp;
+            }
+            else {
+                insert(val, root.right);
+            }
         }
     }
 
@@ -97,9 +88,11 @@ public class Btree {
         Btree b = new Btree(root);
 
         b.bfsTraversal();
-        b.insert(new Node(30, null, null));
-        b.insert(new Node(35, null, null));
-        b.insert(new Node(15, null, null));
+        b.insert(30);
+        b.insert(35);
+        b.insert(15);
+
+        b.insert(10);
         b.bfsTraversal();
 
 
