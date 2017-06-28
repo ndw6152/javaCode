@@ -26,12 +26,15 @@ public class Question1_2 {
         return table;
     }
 
-    public boolean isPermutation(String str, String str2) {
+    public boolean isPermutation(String str, String str2) {  // O(m+n+h1) space = O(h1 + h2)
+        if(str.length() != str2.length()) {
+            return false;
+        }
         Hashtable<Character, Integer> table = generateCountTable(str);
         Hashtable<Character, Integer> table2 = generateCountTable(str2);
 
         for(char key : table.keySet()) {
-            if(!table.get(key).equals(table2.get(key))) {
+            if(!table.get(key).equals(table2.get(key))) { // checking if count of each characters is same in both strings
                 return false;
             }
         }
@@ -45,6 +48,7 @@ public class Question1_2 {
         System.out.println( q.isPermutation("cva", "abc") );
         System.out.println( q.isPermutation("cba", "abc") );
         System.out.println( q.isPermutation("14235", "12345") );
+        System.out.println( q.isPermutation("", "") );
 
     }
 }
