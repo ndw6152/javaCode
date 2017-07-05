@@ -61,7 +61,7 @@ public class Question1_6 {
         }
     }
 
-    public String[] createCompressArray(String[] arr, String str) {
+    public String createCompressString(StringBuilder sb, String str) {
         int count = 1;
         char current = str.charAt(0);
         int index = 0;
@@ -69,19 +69,19 @@ public class Question1_6 {
         for(int i =1; i<str.length(); i++) {
             char next = str.charAt(i);
             if(current != next) {
-                arr[index] = Character.toString(current);
-                arr[index+1] = count + "";
+                sb.append(Character.toString(current));
+                sb.append(count);
                 count = 1;
                 current = next;
-                index += 2;
+
             }
             else{
                 count++;
             }
         }
-        arr[index] = Character.toString(current);
-        arr[index+1] = count + "";
-        return arr;
+        sb.append(Character.toString(current));
+        sb.append(count);
+        return sb.toString();
     }
 
     public String compressString(String str) {
@@ -91,14 +91,8 @@ public class Question1_6 {
             if(space > str.length()) {
                 return str;
             }
-            String[] arr = createCompressArray(new String[space], str);
-            StringBuilder sb = new StringBuilder();
-            for(String s : arr) {
-                sb.append(s);
-            }
-            return sb.toString();
-
-
+            StringBuilder sb = new StringBuilder(space);
+            return createCompressString(sb, str);
         }
         else{
             return "";
