@@ -33,7 +33,7 @@ public class Question1_5 {
             if(table1.get(ch) != null) {
                 int count1 = table1.get(ch);
                 if(count1 != count2) {
-                    return false;
+                    replaced++;
                 }
             }
             else {
@@ -89,6 +89,7 @@ public class Question1_5 {
         System.out.println(q.checkOneAway("", ""));
         System.out.println(q.checkOneAway("", "a"));
         System.out.println(q.checkOneAway("ab", "a"));
+        System.out.println(q.checkOneAway("apple", "aple"));
         System.out.println("-----");
         System.out.println(q.checkOneAway("pale", "ble"));
         System.out.println(q.checkOneAway("pale", "bl"));
