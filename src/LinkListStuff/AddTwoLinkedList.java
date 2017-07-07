@@ -1,5 +1,7 @@
 package LinkListStuff;
 
+import java.util.Hashtable;
+
 /**
  *
  * Created by Anonealio on 6/8/2017.
@@ -7,10 +9,12 @@ package LinkListStuff;
 public class AddTwoLinkedList{
 
     public void printNode(Node n) {
-        while(n != null) {
-            System.out.println(n.value);
+
+        while(n.next != null) {
+            System.out.print(n.value + " > ");
             n = n.next;
         }
+        System.out.print(n.value);
     }
 
 
@@ -108,17 +112,95 @@ public class AddTwoLinkedList{
         Node a2 = new Node<>(1, null);
         Node a1 = new Node<>(1, a2);  // 11
 
-
-
-
         findLongestLinkedlist(a1, b1); //total 6010
-        System.out.println("-----");
+
         findLongestLinkedlist(n1, y1); //total 1110  // creating new node
 
     }
 
+
+    public void removeDuplicates(Node<Integer> head) {  // O(n) space O(n)
+
+        Node<Integer> previous = head;
+        Node<Integer> current = head.next;
+        Hashtable<Integer, Integer> table = new Hashtable<>();
+
+        table.put(previous.value, 1);
+
+        while(current != null) {
+
+            if(table.get(current.value) != null) { // it is a duplicate
+                previous.next = current.next;
+                current = current.next;
+            }
+            else {
+                table.put(current.value, 1);
+                previous = current;
+                current = current.next;
+            }
+        }
+    }
+
+    public void removeDupNoExternalSpace(Node<Integer> head) { // O(n^2)
+
+        Node<Integer> current = head;
+
+        while(current != null) {
+            Node prev = current;
+            Node next = current.next;
+            while(next != null) {
+                if(next.value == current.value) {
+                    prev.next = next.next;
+                    next = next.next;
+                }
+                else {
+                    prev = next;
+                    next = next.next;
+                }
+            }
+            current = current.next;
+        }
+    }
+
+
+    public void testDuplicatesRemoval() {
+        Node<Integer> b5 = new Node<>(1, null);
+        Node<Integer> b4 = new Node<>(5, b5);
+        Node<Integer> b3 = new Node<>(9, b4);
+        Node<Integer> b2 = new Node<>(9, b3);
+        Node<Integer> b1 = new Node<>(6, b2);  // 169951
+        Node<Integer> b0 = new Node<>(1, b1);
+
+        printNode(b0);
+        removeDupNoExternalSpace(b0); //removeDuplicates(b0);
+        System.out.println();
+        printNode(b0);
+
+
+        System.out.println();
+        Node n3 = new Node<>(1, null);
+        Node n2 = new Node<>(1, n3);
+        Node n1 = new Node<>(1, n2);  // 111
+        printNode(n1);
+        removeDuplicates(n1);
+        System.out.println();
+        printNode(n1);
+        System.out.println();
+
+        Node y3 = new Node<>(3, null);
+        Node y2 = new Node<>(2, y3);
+        Node y1 = new Node<>(1, y2);  // 999
+        printNode(y1);
+        removeDuplicates(y1);
+        System.out.println();
+        printNode(y1);
+    }
+
+
     public static void main(String[] args) {
         AddTwoLinkedList q1 = new AddTwoLinkedList();
-        q1.setUpNodes();
+        // q1.setUpNodes();
+
+        q1.testDuplicatesRemoval();
     }
 }
