@@ -6,44 +6,53 @@ package LinkListStuff;
 public class Stack<T>{
 
 
-    private Node<T> head;
+    private Node<T> top;
 
     public Stack() {}
     public Stack(Node n) {
-        head = n;
+        top = n;
     }
 
 
     public void push(T val) {
         Node<T> n = new Node<>(val, null);
-        n.next = head;
-        head = n;
+        n.next = top;
+        top = n;
     }
 
     public void push(Node n) {
-        if(head == null) {
-            head = n;
-            head.next = null;
+        if(top == null) {
+            top = n;
+            top.next = null;
         }
         else {
-            n.next = head;
-            head = n;
+            n.next = top;
+            top = n;
         }
     }
 
     public T pop() {
-        if(head == null) {
+        if(top == null) {
             return null;
         }
         else {
-            T val = head.value;
-            head = head.next;
+            T val = top.value;
+            top = top.next;
             return val;
         }
     }
 
+    public T peek() {
+        if(top == null) {
+            return null;
+        }
+        else {
+            return top.value;
+        }
+    }
+
     public void printStack() {
-        Node temp = head;
+        Node temp = top;
 
         while(temp != null) {
             System.out.print(temp.value + " ");
@@ -107,6 +116,7 @@ public class Stack<T>{
         s2.push(999);
         s2.push(1000);
         s2.printStack();
+        System.out.println(s2.peek());
 
     }
 }
