@@ -16,7 +16,7 @@ public class Question2_7 {
         return table;
     }
 
-    public Node<Integer> isIntersection(Node<Integer> n1, Node<Integer> n2) {
+    public Node<Integer> isIntersection(Node<Integer> n1, Node<Integer> n2) {  // O(n) Space: O(n)
         Hashtable<Node, Integer> table = createTable(n1);
 
         Node<Integer> start = n2;
@@ -28,6 +28,58 @@ public class Question2_7 {
         }
         return null;
     }
+
+
+    public int getSize(Node n1) {
+        int count = 0;
+        while(n1 != null) {
+            count++;
+            n1 = n1.next;
+        }
+        return count;
+    }
+
+    public Node<Integer> checkIfIntersection(Node<Integer> n1, Node<Integer> n2) {
+        //n1 and n2 same size;
+        while(n1 != null) {
+            if(n1 == n2){
+                return n1;
+            }
+            n1 = n1.next;
+            n2 = n2.next;
+        }
+        return null;
+    }
+
+    public Node<Integer> isIntersectionNoExSpace(Node<Integer> n1, Node<Integer> n2){  // O(n) space: O(1)
+        // find larger linkedlist and discount extra nodes, then start comparing one by one.
+
+        int size1 = getSize(n1);
+        int size2 = getSize(n2);
+
+        Node startN1 = n1;
+        Node startN2 = n2;
+
+        Node<Integer> result = null;
+
+        if(size1 > size2) {
+            int loop = size1 -size2;
+            for(int i=0; i<loop; i++) {
+                startN1 = startN1.next;
+            }
+        }
+        else{
+            int loop = size2 -size1;
+            for(int i=0; i<loop; i++) {
+                startN2 = startN2.next;
+            }
+        }
+        result = checkIfIntersection(startN1, startN2);
+        return result;
+    }
+
+
+
 
     public void printIntersect(Node result) {
         if(result != null){
@@ -52,6 +104,14 @@ public class Question2_7 {
 
         q.printIntersect(q.isIntersection(n1, n3));
         q.printIntersect(q.isIntersection(n, n3));
+
+        System.out.println("-------------------");
+        q.printIntersect(q.isIntersectionNoExSpace(n, n1));
+        q.printIntersect(q.isIntersectionNoExSpace(n, n2));
+        q.printIntersect(q.isIntersectionNoExSpace(n1, n2));
+
+        q.printIntersect(q.isIntersectionNoExSpace(n1, n3));
+        q.printIntersect(q.isIntersectionNoExSpace(n, n3));
 
     }
 
