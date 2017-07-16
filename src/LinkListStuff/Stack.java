@@ -3,12 +3,20 @@ package LinkListStuff;
 /**
  * Created by Anonealio on 6/12/2017.
  */
-public class Stack {
+public class Stack<T>{
 
 
-    private Node head;
+    private Node<T> head;
 
+    public Stack() {}
     public Stack(Node n) {
+        head = n;
+    }
+
+
+    public void push(T val) {
+        Node<T> n = new Node<>(val, null);
+        n.next = head;
         head = n;
     }
 
@@ -23,12 +31,12 @@ public class Stack {
         }
     }
 
-    public int pop() {
+    public T pop() {
         if(head == null) {
-            return -1;
+            return null;
         }
         else {
-            int val = (Integer)head.value;
+            T val = head.value;
             head = head.next;
             return val;
         }
@@ -36,13 +44,12 @@ public class Stack {
 
     public void printStack() {
         Node temp = head;
+
         while(temp != null) {
             System.out.print(temp.value + " ");
             temp = temp.next;
         }
         System.out.println();
-
-        System.out.println("head: " + head.value);
     }
 
     public static void main(String[] args) {
@@ -54,24 +61,52 @@ public class Stack {
         s.push(new Node<Integer>(6, null));
         s.printStack();
 
-        System.out.println(s.pop());
+        System.out.println("pop: " + s.pop());
 
         s.printStack();
 
-        System.out.println(s.pop());
-        System.out.println(s.pop());
+        System.out.println("pop: " + s.pop());
+        System.out.println("pop: " + s.pop());
         s.printStack();
 
         s.push(new Node<Integer>(100, null));
         s.push(new Node<Integer>(9000, null));
 
         s.printStack();
-        s.pop(); s.pop(); s.pop(); s.pop(); System.out.println(s.pop());
-
-        System.out.println(s.pop());  // nothing left in stack();
+        s.pop(); s.pop(); s.pop(); s.pop();
+        System.out.println("removed 9000 100 3 2");
+        System.out.println("pop: " + s.pop());
+        System.out.println("pop: " + s.pop());  // nothing left in stack();
 
         s.push(new Node<Integer>(999, null));
         s.push(new Node<Integer>(1000, null));
         s.printStack();
+
+        System.out.println("-----------------");
+        Stack<Integer> s2 = new Stack<Integer>();
+        s2.push(1);s2.push(2);s2.push(3);s2.push(4);s2.push(5);s2.push(6);
+        s2.printStack();
+
+        System.out.println("pop: " + s2.pop());
+
+        s2.printStack();
+
+        System.out.println("pop: " + s2.pop());
+        System.out.println("pop: " + s2.pop());
+        s2.printStack();
+
+        s2.push(100);
+        s2.push(9000);
+
+        s2.printStack();
+        s2.pop(); s2.pop(); s2.pop(); s2.pop();
+        System.out.println("removed 9000 100 3 2");
+        System.out.println("pop: " + s2.pop());
+        System.out.println("pop: " + s2.pop());  // nothing left in stack();
+
+        s2.push(999);
+        s2.push(1000);
+        s2.printStack();
+
     }
 }
