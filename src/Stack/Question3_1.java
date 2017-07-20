@@ -64,23 +64,24 @@ public class Question3_1 {
 
     public static void main(String[] args) {
         Question3_1 q = new Question3_1();
+        System.out.println("pushed 3 in stack");
         q.stackMin.push(2);
         q.stackMin.push(5);
         q.stackMin.push(6);
         q.stackMin.printStack();
-        System.out.println(q.stackMin.min());
-
+        System.out.println("min val: " + q.stackMin.min());
+        System.out.println("pushed 1 in stack");
         q.stackMin.push(1);
         q.stackMin.printStack();
-        System.out.println(q.stackMin.min());
+        System.out.println("min val: " +q.stackMin.min());
         q.stackMin.push(100);
         q.stackMin.printStack();
-        System.out.println(q.stackMin.min());
-
+        System.out.println("min val: " +q.stackMin.min());
+        System.out.println("removed 2 from stack");
         q.stackMin.pop();
         q.stackMin.pop();
         q.stackMin.printStack();
-        System.out.println(q.stackMin.min());
+        System.out.println("min val: " +q.stackMin.min());
 
     }
 }
