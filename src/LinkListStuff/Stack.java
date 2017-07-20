@@ -7,6 +7,7 @@ public class Stack<T>{
 
 
     private Node<T> top;
+    public int count = 0;
 
     public Stack() {}
     public Stack(Node n) {
@@ -29,6 +30,7 @@ public class Stack<T>{
             n.next = top;
             top = n;
         }
+        count++;
     }
 
     public T pop() {
@@ -38,6 +40,7 @@ public class Stack<T>{
         else {
             T val = top.value;
             top = top.next;
+            count--;
             return val;
         }
     }
@@ -62,6 +65,7 @@ public class Stack<T>{
     }
 
     public static void main(String[] args) {
+
         Stack s = new Stack(new Node<Integer>(1, null));
         s.push(new Node<Integer>(2, null));
         s.push(new Node<Integer>(3, null));
