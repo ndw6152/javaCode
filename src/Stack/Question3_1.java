@@ -5,54 +5,53 @@ import LinkListStuff.Stack;
 /**
  * Created by Anonealio on 7/16/2017.
  */
-public class Question3_1 {
 
+class StackMin {
 
-    public class StackMin {
+    private Stack<Integer> stack;
+    private Stack<Integer> minStack;
 
-        private Stack<Integer> stack;
-        private Stack<Integer> minStack;
-
-        public StackMin() {
-            this.stack = new Stack<Integer>();
-            this.minStack = new Stack<Integer>();
-        }
-
-        public void push(int val) {
-            if(minStack.peek() == null) {
-                minStack.push(val);
-
-            }
-            else {
-                int minVal = minStack.peek();
-
-                if(val < minVal) {
-                    minStack.push(val);
-                }
-                else {
-                    minStack.push(minVal);
-                }
-            }
-
-
-            stack.push(val);
-        }
-
-        public int pop() {
-            minStack.pop();
-            return stack.pop();
-        }
-
-        public int min() {
-            return minStack.peek();
-        }
-
-        public void printStack() {
-            stack.printStack();
-        }
-
+    public StackMin() {
+        this.stack = new Stack<Integer>();
+        this.minStack = new Stack<Integer>();
     }
 
+    public void push(int val) {
+        if(minStack.peek() == null) {
+            minStack.push(val);
+
+        }
+        else {
+            int minVal = minStack.peek();
+
+            if(val < minVal) {
+                minStack.push(val);
+            }
+            else {
+                minStack.push(minVal);
+            }
+        }
+
+
+        stack.push(val);
+    }
+
+    public int pop() {
+        minStack.pop();
+        return stack.pop();
+    }
+
+    public int min() {
+        return minStack.peek();
+    }
+
+    public void printStack() {
+        stack.printStack();
+    }
+
+}
+
+public class Question3_1 {
 
     public StackMin stackMin;
 
