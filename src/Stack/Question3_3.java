@@ -75,10 +75,13 @@ class SetofStacks {
 }
 
 public class Question3_3 {
-    SetofStacks setofStacks = new SetofStacks(3);
+    SetofStacks setofStacks;
+    public Question3_3(int threshold) {
+        this.setofStacks = new SetofStacks(threshold);
+    }
 
     public static void main(String[] args) {
-        Question3_3 q = new Question3_3();
+        Question3_3 q = new Question3_3(3);
         System.out.println("added 3");
         q.setofStacks.push(1);
         q.setofStacks.push(10);
@@ -114,5 +117,18 @@ public class Question3_3 {
         System.out.println("removed 1 in stack 0");
         q.setofStacks.popAt(0);
         q.setofStacks.printAllStacks();
+
+
+        Question3_3 q2 = new Question3_3(5);
+        System.out.println("new set of stacks with threshold 5");
+        q2.setofStacks.push(1);
+        q2.setofStacks.push(10);
+        q2.setofStacks.push(10);
+        q2.setofStacks.printAllStacks();
+        System.out.println("added 3 more which shows up in new stack");
+        q2.setofStacks.push(20);
+        q2.setofStacks.push(30);
+        q2.setofStacks.push(40);
+        q2.setofStacks.printAllStacks();
     }
 }
