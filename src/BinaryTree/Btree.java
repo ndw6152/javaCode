@@ -49,6 +49,21 @@ public class Btree {
         }
     }
 
+
+    public Node insert2(Node root, int val) {
+        if (root == null) {
+            return new Node(val, null, null);
+        }
+        if(val < root.value) {
+            root.left = insert2(root.left, val);
+        }
+        else {
+            root.right = insert2(root.right, val);
+        }
+        return root;
+
+    }
+
     public void bfsTraversal() {
         Node temp = root;
         Queue<Node> currentLevel = new Queue<>();
@@ -94,6 +109,20 @@ public class Btree {
 
         b.insert(10);
         b.bfsTraversal();
+
+
+        System.out.println("------------");
+
+        Node start = new Node(100, null, null);
+        Btree tree = new Btree(start);
+
+        tree.insert2(start, 45);
+        tree.insert2(start, 105);
+        tree.insert2(start, 85);
+        tree.insert2(start, 10);
+        tree.insert2(start, 25);
+
+        tree.bfsTraversal();
 
 
     }
