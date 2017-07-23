@@ -3,6 +3,9 @@ package BinaryTree;
 
 import LinkListStuff.Queue;
 
+import java.util.LinkedList;
+import java.util.Stack;
+
 /**
  * Created by Anonealio on 6/13/2017.
  */
@@ -64,7 +67,46 @@ public class Btree {
 
     }
 
-    public void bfsTraversal() {
+    public void BFSbtree() {
+        Node temp = root;
+        java.util.Queue<Node> q = new LinkedList<>();
+
+        if (temp != null) {
+            q.add(temp);
+
+            while(!q.isEmpty()) {
+                Node current = q.poll();
+                if(!current.visited) {
+                    System.out.print(current.value + " ");
+                    q.add(current.left);
+                    q.add(current.right);
+                    current.visited = true;
+                }
+            }
+        }
+    }
+
+    public void DFSbtree() {
+        Node temp = root;
+        Stack stack = new Stack();
+
+        if (temp !=  null) {
+            stack.push(temp);
+
+            while(!stack.isEmpty()) {
+                Node current = (Node)stack.pop();
+                if(!current.visited) {
+                    System.out.print(current.value + " ");
+                    stack.push(current.left);
+                    stack.push(current.right);
+                    current.visited = true;
+                }
+            }
+        }
+
+    }
+
+    public void levelTraversal() {
         Node temp = root;
         Queue<Node> currentLevel = new Queue<>();
         Queue<Node> nextLevel = new Queue<>();
@@ -94,6 +136,45 @@ public class Btree {
     }
 
 
+    public void inOrderTraversal(Node root, boolean ascending) {
+        if(root == null) {
+            return;
+        }
+        Node temp = root;
+        if(ascending) {
+            inOrderTraversal(temp.left, ascending);
+            System.out.print(temp.value + " ");
+            inOrderTraversal(temp.right, ascending);
+        }
+        else {
+            inOrderTraversal(temp.right, ascending);
+            System.out.print(temp.value + " ");
+            inOrderTraversal(temp.left, ascending);
+        }
+    }
+
+    public void preOrderTraversal(Node root) {
+        if(root == null) {
+            return;
+        }
+        System.out.println(root.value + " ");
+        preOrderTraversal(root.left);
+        preOrderTraversal(root.right);
+
+    }
+
+    public void postOrderTraversal(Node root) {
+        if(root == null) {
+            return;
+        }
+
+        postOrderTraversal(root.left);
+        postOrderTraversal(root.right);
+        System.out.println(root.value + " ");
+
+    }
+
+
     public static void main(String[] args) {
         Node _25 = new Node(25, null, new Node(45, null, null));
         Node _75 = new Node(75, new Node(65, null, null), new Node(90, null, null));
@@ -102,13 +183,13 @@ public class Btree {
         Node root = new Node(100, _50, _200);
         Btree b = new Btree(root);
 
-        b.bfsTraversal();
+        b.levelTraversal();
         b.insert(30);
         b.insert(35);
         b.insert(15);
 
         b.insert(10);
-        b.bfsTraversal();
+        b.levelTraversal();
 
 
         System.out.println("------------");
@@ -118,13 +199,26 @@ public class Btree {
 
         tree.insert2(start, 45);
         tree.insert2(start, 105);
-        tree.insert2(start, 85);
+        tree.insert2(start, 200);
+        tree.insert2(start, 150);
         tree.insert2(start, 10);
-        tree.insert2(start, 25);
+        tree.insert2(start, 55);
+        tree.insert2(start, 50);
+        tree.insert2(start, 70);
 
-        tree.bfsTraversal();
+        tree.levelTraversal();
 
+        System.out.println("-------------");
+        tree.inOrderTraversal(start, true);
+        System.out.println();
+        tree.inOrderTraversal(start, false);
+        System.out.println();
 
+        System.out.println("-------------");
+        tree.preOrderTraversal(start);
+
+        System.out.println("-------------");
+        tree.postOrderTraversal(start);
     }
 
 
