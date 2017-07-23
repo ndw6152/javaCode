@@ -15,11 +15,17 @@ public class Btree {
 
     private Node root;
 
+    public Btree() {
+
+    }
 
     public Btree(Node n) {
         root = n;
     }
 
+    public Node getRoot() {
+        return root;
+    }
 
     public void insert(int val) {
         if(root == null) {
@@ -27,7 +33,7 @@ public class Btree {
             root = temp;
         }
         else {
-            insert(val, root);
+            insert2(root, val);
         }
     }
 
@@ -171,6 +177,33 @@ public class Btree {
         postOrderTraversal(root.left);
         postOrderTraversal(root.right);
         System.out.println(root.value + " ");
+
+    }
+
+    public boolean isPath(Node start, Node dest) {
+        if(start != null || dest != null) {
+            return false;
+        }
+
+        Node temp = start;
+        java.util.Queue q = new LinkedList<Node>();
+        q.add(temp);
+
+        while(!q.isEmpty()) {
+            Node current = (Node)q.poll();
+            if(current != null) {
+                if(!current.visited) {
+
+                    if(current == dest) {
+                        return true;
+                    }
+
+                    q.add(current.left);
+                    q.add(current.right);
+                }
+            }
+        }
+        return false;
 
     }
 
