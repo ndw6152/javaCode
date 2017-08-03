@@ -1,5 +1,7 @@
 package BinaryTree;
 
+import LinkListStuff.Queue;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -54,9 +56,33 @@ public class Question4_9 <T>{
     }
 
 
+    public void printByLevel(Node root) {
+
+        Queue<Node> queue = new Queue<>();
+        Queue<Node> queue2 = new Queue<>();
 
 
+        if(root != null) {
+            queue.push(root);
 
+            while(queue.getSize() != 0) {
+
+                while(queue.getSize() != 0) {
+                    Node current = queue.pop();
+                    System.out.print(current.value + " ");
+                    if(current.left != null)
+                        queue2.push(current.left);
+                    if(current.right != null)
+                        queue2.push(current.right);
+                }
+                System.out.println();
+                queue = queue2;
+                queue2 = new Queue<>();
+            }
+        }
+
+
+    }
 
     public static void main(String[] args) {
 
@@ -72,17 +98,18 @@ public class Question4_9 <T>{
         q.printArray(res);
         System.out.println("-----------");
 
-        
         Question4_9<Integer> q2 = new Question4_9<>();
         ArrayList<Integer> arrInt = new ArrayList<>();
         arrInt.add(2);arrInt.add(3);arrInt.add(4);
         ArrayList<ArrayList<Integer>> res2 = q2.permutation(arrInt);
         q2.printArray(res2);
+        System.out.println("-----------");
 
 
+        Btree b = new Btree();
+        b.insert(15);b.insert(10);b.insert(20);b.insert(5);b.insert(11);b.insert(25);b.insert(100);
 
-
-
+        q2.printByLevel(b.getRoot());
 
 
     }
