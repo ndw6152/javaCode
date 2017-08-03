@@ -6,26 +6,26 @@ import java.util.ArrayList;
 /**
  * Created by Anonealio on 8/3/2017.
  */
-public class Question4_9 {
+public class Question4_9 <T>{
 
-    public ArrayList<ArrayList<String>> merge(String str, ArrayList<String> array) {
-        ArrayList<ArrayList<String>> result = new ArrayList<>();
-        ArrayList<String> array2;
+    public ArrayList<ArrayList<T>> merge(T str, ArrayList<T> array) {
+        ArrayList<ArrayList<T>> result = new ArrayList<>();
+        ArrayList<T> array2;
         for(int i = 0; i <array.size(); i++) {
-            array2 = (ArrayList<String>) array.clone();
+            array2 = (ArrayList<T>) array.clone();
             array2.add(i, str);
             result.add(array2);
         }
-        array2 = (ArrayList<String>) array.clone();
+        array2 = (ArrayList<T>) array.clone();
         array2.add(str);
         result.add(array2);
         return result;
     }
 
-    public void printArray(ArrayList<ArrayList<String>> array) {
+    public void printArray(ArrayList<ArrayList<T>> array) {
         System.out.println(array.size());
-        for(ArrayList<String> arr : array) {
-            for(String str : arr) {
+        for(ArrayList<T> arr : array) {
+            for(T str : arr) {
                 System.out.print(str + " ");
             }
             System.out.println();
@@ -34,19 +34,19 @@ public class Question4_9 {
 
     }
 
-    public ArrayList<ArrayList<String>> permutation(ArrayList<String> array) {
-        ArrayList<ArrayList<String>> result = new ArrayList<>();
+    public ArrayList<ArrayList<T>> permutation(ArrayList<T> array) {
+        ArrayList<ArrayList<T>> result = new ArrayList<>();
         if(array.size() == 2) {
-            String s = array.get(0);
+            T s = array.get(0);
             array.remove(0);
             return merge(s, array);
         }
 
-        String s = array.get(0);
+        T s = array.get(0);
         array.remove(0);
-        ArrayList<ArrayList<String>> arrayRes = permutation(array);
-        for(ArrayList<String> arrString : arrayRes) {
-            ArrayList<ArrayList<String>> mergeRes =  merge(s, arrString);
+        ArrayList<ArrayList<T>> arrayRes = permutation(array);
+        for(ArrayList<T> arrString : arrayRes) {
+            ArrayList<ArrayList<T>> mergeRes =  merge(s, arrString);
             result.addAll(mergeRes);
         }
 
@@ -60,7 +60,7 @@ public class Question4_9 {
 
     public static void main(String[] args) {
 
-        Question4_9 q = new Question4_9();
+        Question4_9<String> q = new Question4_9<>();
         ArrayList<String> array = new ArrayList<>();
         array.add("c");
         q.printArray(q.merge("d", array));
@@ -70,6 +70,18 @@ public class Question4_9 {
         array2.add("a");array2.add("b");array2.add("c");array2.add("d");
         ArrayList<ArrayList<String>> res = q.permutation(array2);
         q.printArray(res);
+        System.out.println("-----------");
+
+        
+        Question4_9<Integer> q2 = new Question4_9<>();
+        ArrayList<Integer> arrInt = new ArrayList<>();
+        arrInt.add(2);arrInt.add(3);arrInt.add(4);
+        ArrayList<ArrayList<Integer>> res2 = q2.permutation(arrInt);
+        q2.printArray(res2);
+
+
+
+
 
 
 
