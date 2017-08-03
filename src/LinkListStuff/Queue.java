@@ -9,6 +9,7 @@ public class Queue<T>{
     private Node head;
     private Node tail;
 
+    private int size;
 
     public Queue() {
 
@@ -25,9 +26,10 @@ public class Queue<T>{
             tail = tail.next;
             tail.next = null;
         }
+        size++;
     }
 
-    public Node pop() {
+    public T pop() {
         if(head == tail) {
             tail = null;
         }
@@ -37,7 +39,8 @@ public class Queue<T>{
         else{
             Node temp = head;
             head = head.next;
-            return temp;
+            size--;
+            return (T)temp.value;
         }
     }
 
@@ -57,8 +60,9 @@ public class Queue<T>{
         return tail;
     }
 
-
-
+    public int getSize() {
+        return size;
+    }
 
     public static void main(String[] args) {
         Queue<Integer> q = new Queue<>();

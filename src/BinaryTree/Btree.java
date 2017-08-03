@@ -121,13 +121,12 @@ public class Btree {
 
         while(currentLevel.getTail() != null) {
             while(currentLevel.getTail() != null) {
-                LinkListStuff.Node val = currentLevel.pop();
-                if(val.value != null) {
-                    Node content = (Node)val.value;
+                Node val = currentLevel.pop();
+                if(val != null) {
 
-                    System.out.print(content.value + " ");
-                    nextLevel.push(content.left);
-                    nextLevel.push(content.right);
+                    System.out.print(val.value + " ");
+                    nextLevel.push(val.left);
+                    nextLevel.push(val.right);
                 }
                 else {
                     System.out.print("- ");
