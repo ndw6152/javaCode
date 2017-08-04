@@ -25,7 +25,7 @@ public class kwickSort {
             while(arr.get(j) > pivot) {
                 j--;
             }
-            if(i < j) {
+            if(i < j) {  // swap them
                 int temp = arr.get(i);
                 arr.set(i, arr.get(j));
                 arr.set(j, temp);
