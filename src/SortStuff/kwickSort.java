@@ -37,8 +37,8 @@ public class kwickSort {
                 arr.set(j, temp);
 
             }
-            printArray(arr, i, j);
-            System.out.println("i =" + i + "  j=" +j);
+            System.out.print(arr);
+            System.out.println(" pivot = " + pivot +" i =" + i + "  j=" +j);
             quickSort(arr, low, j-1);
             quickSort(arr, i+1, high);
         }
@@ -55,7 +55,7 @@ public class kwickSort {
 
             int i = low; //low
             int j = high;
-            while(i < j) {
+            while(i <= j) {
 
                 while(arr.get(i) < pivot) {
                     i++;
@@ -63,19 +63,18 @@ public class kwickSort {
                 while(arr.get(j) > pivot) {
                     j--;
                 }
-                if(i < j) {  // swap them
+                if(i <= j) {  // swap them
                     int temp = arr.get(i);
                     arr.set(i, arr.get(j));
                     arr.set(j, temp);
                     i++;
                     j--;
                 }
-                printArray(arr, i, j);
-                System.out.println("pivot = " + pivot +" i =" + i + "  j=" +j);
+                System.out.print(arr);
+                System.out.println(" pivot = " + pivot +" i =" + i + "  j=" +j);
             }
-            System.out.println(arr);
             quickSort2(arr, low, i-1);
-            quickSort2(arr, i+1, high);
+            quickSort2(arr, i, high);
         }
     }
 
@@ -110,7 +109,7 @@ public class kwickSort {
         System.out.println(arr4);
 
 
-        System.out.println("-----------------quick sort-------------");
+        System.out.println("-----------------quick sort  2-------------");
 
         ArrayList<Integer> arr5 = new ArrayList<>();
         arr5.add(22);arr5.add(2);arr5.add(3);arr5.add(2);arr5.add(2);arr5.add(2);
