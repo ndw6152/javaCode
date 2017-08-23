@@ -119,7 +119,7 @@ public class kwickSort {
         if(low < high) {
             int pi = partition(arr, low, high);
 
-            if(pi > 0) {
+            if(pi >= 0) {
                 quickSort3(arr, low, pi -1);
                 quickSort3(arr, pi +1, high);
             }
