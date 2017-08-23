@@ -78,6 +78,52 @@ public class kwickSort {
         }
     }
 
+    /////////////////
+
+    public int partition(ArrayList<Integer> arr, int low, int high) {
+        if(low >= high) {
+            return -1;
+        }
+        int i = low;
+        int pivotIndex = high;
+        int pivot = arr.get(high);
+
+        for(int j = low; j < high; j++) {
+
+            if(arr.get(j) <= pivot) {
+                if(i != j){
+                    int temp = arr.get(i);
+                    arr.set(i, arr.get(j));
+                    arr.set(j, temp);
+                }
+                i++;
+                System.out.println(arr + " pivot =" +  pivot + " i=" + i + " j=" + j);
+            }
+
+        }
+        System.out.println(arr + " i=" + i);
+        int temp = arr.get(i);
+        arr.set(i, pivot);
+        arr.set(pivotIndex, temp);
+
+        return i;
+    }
+
+    public void quickSort3(ArrayList<Integer> arr, int low, int high) {
+        if(low < high) {
+            int pi = partition(arr, low, high);
+
+            if(pi > 0) {
+                quickSort3(arr, low, pi -1);
+                quickSort3(arr, pi +1, high);
+            }
+        }
+
+    }
+
+
+
+
     public static void main(String[] args) {
         kwickSort q = new kwickSort();
 
@@ -116,5 +162,29 @@ public class kwickSort {
         System.out.println(arr5);
         q.quickSort2(arr5, 0, arr5.size()-1);
         System.out.println(arr5);
+
+
+        System.out.println("-----------------quick sort  3-------------");
+
+        ArrayList<Integer> arr6 = new ArrayList<>();
+        arr6.add(54);arr6.add(26);arr6.add(93);arr6.add(17);arr6.add(77);arr6.add(31);arr6.add(44);arr6.add(55);arr6.add(20);
+        System.out.println(arr6);
+        q.quickSort3(arr6, 0, arr6.size()-1);
+        System.out.println(arr6);
+
+
+        System.out.println("-----------------quick sort  3-------------");
+        ArrayList<Integer> arr7 = new ArrayList<>();
+        arr7.add(22);arr7.add(2);arr7.add(3);arr7.add(2);arr7.add(2);arr7.add(2);
+        System.out.println(arr7);
+        q.quickSort3(arr7, 0, arr7.size()-1);
+        System.out.println(arr7);
+
+        System.out.println("-----------------quick sort  3-------------");
+        ArrayList<Integer> arr8 = new ArrayList<>();
+        arr8.add(100);arr8.add(2);arr8.add(1);arr8.add(5);arr8.add(70);arr8.add(25);arr8.add(15);arr8.add(500);
+        System.out.println(arr8);
+        q.quickSort3(arr8, 0, arr8.size()-1);
+        System.out.println(arr8);
     }
 }
