@@ -56,28 +56,38 @@ public class Question4_9 <T>{
     }
 
 
+
+
     public void printByLevel(Node root) {
 
         Queue<Node> queue = new Queue<>();
         Queue<Node> queue2 = new Queue<>();
-
+        Question4_9<Integer> q = new Question4_9<>();
 
         if(root != null) {
             queue.push(root);
 
             while(queue.getSize() != 0) {
 
+                ArrayList<Integer> array = new ArrayList<>();
                 while(queue.getSize() != 0) {
                     Node current = queue.pop();
                     System.out.print(current.value + " ");
-                    if(current.left != null)
+                    if(current.left != null) {
                         queue2.push(current.left);
-                    if(current.right != null)
+                        array.add(current.left.value);
+                    }
+                    if(current.right != null) {
                         queue2.push(current.right);
+                        array.add(current.right.value);
+                    }
+
                 }
-                System.out.println();
+                q.permutation(array);
+
                 queue = queue2;
                 queue2 = new Queue<>();
+                array.clear();
             }
         }
 
@@ -90,6 +100,11 @@ public class Question4_9 <T>{
         ArrayList<String> array = new ArrayList<>();
         array.add("c");
         q.printArray(q.merge("d", array));
+        System.out.println("-----------");
+
+        ArrayList<String> array1 = new ArrayList<>();
+        array1.add("1");array1.add("2"); array1.add("3");
+        q.printArray(q.permutation(array1));
         System.out.println("-----------");
 
         ArrayList<String> array2 = new ArrayList<>();
@@ -109,7 +124,7 @@ public class Question4_9 <T>{
         Btree b = new Btree();
         b.insert(15);b.insert(10);b.insert(20);b.insert(5);b.insert(11);b.insert(25);b.insert(100);
 
-        q2.printByLevel(b.getRoot());
+        //q2.printByLevel(b.getRoot());
 
 
     }

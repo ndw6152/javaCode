@@ -32,9 +32,13 @@ public class Btree {
         if(root == null) {
             Node temp = new Node(val, null, null);
             root = temp;
+            return;
+        }
+        if(val < root.value) {
+            root.left = insert2(root.left, val);
         }
         else {
-            insert2(root, val);
+            root.right = insert2(root.right, val);
         }
     }
 
@@ -72,6 +76,27 @@ public class Btree {
         }
         return root;
 
+    }
+
+    public Node insertIterative(Node root, int val) {
+        Node current = root;
+        while(current != null) {
+            if(val <= current.value) {
+                if(current.left == null) {
+                    current.left = new Node(val, null, null);
+                    break;
+                }
+                current = current.left;
+            }
+            else {
+                if(current.right == null) {
+                    current.right = new Node(val, null, null);
+                    break;
+                }
+                current = current.right;
+            }
+        }
+        return root;
     }
 
     public void BFSbtree() {
@@ -273,6 +298,16 @@ public class Btree {
 
         System.out.println("-------------");
         tree.postOrderTraversal(start);
+
+
+        System.out.println("-------------");
+        Node start2 = new Node(15, null, null);
+        Btree tree2 = new Btree(start2);
+        tree2.insert2(start2, 10);tree2.insert2(start2, 20);tree2.insert2(start2, 8);tree2.insert2(start2, 12); tree2.insert2(start2, 25);
+        tree2.insertIterative(start2, 16);
+        tree2.inOrderTraversal(start2, false);
+        System.out.println("\n-------------");
+        tree2.levelTraversal();
     }
 
 
