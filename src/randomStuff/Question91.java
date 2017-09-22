@@ -68,30 +68,30 @@ public class Question91 {
     }
     /////////////////////////
 
-    public void permBackTrack(List<List<Character>> allSolution, List<Character>solution, String str, boolean[]visited) {
-        if(solution.size() == str.length()) {
-            allSolution.add(new ArrayList<>(solution));
+    public void permBackTrack(List<String> allSolution, StringBuilder solution, String str, boolean[]visited) {
+        if(solution.toString().length() == str.length()) {
+            allSolution.add(solution.toString());
             return;
         }
         for(int i =0; i<str.length(); i++) {
             if(!visited[i]) {
                 visited[i] = true;
-                solution.add(str.charAt(i));
+                solution.append(str.charAt(i));
                 permBackTrack(allSolution, solution, str, visited);
-                solution.remove(solution.size()-1);
+                solution.deleteCharAt(solution.length()-1);
                 visited[i] = false;
             }
         }
 
     }
 
-    public List<List<Character>> permutationStringUsingBackTrack(String str) {
-        List<List<Character>> result = new ArrayList<>();
+    public List<String> permutationStringUsingBackTrack(String str) {
+        List<String> result = new ArrayList<>();
         if(str.length() == 0) {
             return result;
         }
         boolean[] visited = new boolean[str.length()];
-        permBackTrack(result, new ArrayList<>(), str, visited);
+        permBackTrack(result, new StringBuilder(), str, visited);
         return result;
     }
 
@@ -111,10 +111,11 @@ public class Question91 {
         System.out.println(q.perm("112"));
 
         System.out.println("------");
-        permutation2("123");
-        System.out.println("------");
         System.out.println(q.permutationStringUsingBackTrack("123"));
         System.out.println("------");
+        System.out.println(q.permutationStringUsingBackTrack("112"));
+        System.out.println("------");
+        System.out.println(q.permutationStringUsingBackTrack("ABC"));
     }
 
 
