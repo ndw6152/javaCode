@@ -9,10 +9,11 @@ import java.util.Arrays;
  */
 public class kwickSort {
 
-    public void printArray(ArrayList<Integer> arr, int low, int high) {
-        for(int i =low; i< high; i++) {
-            System.out.print(arr.get(i) + " ");
+    public void printArray(int[] arr) {
+        for(int i =0; i< arr.length; i++) {
+            System.out.print(arr[i] + " ");
         }
+        System.out.println();
     }
 
     // inefficient quicksort that recurse on the array too many times and have overlaps on the left array and right array
@@ -107,7 +108,7 @@ public class kwickSort {
             }
         }
         System.out.println(arr + " pivot =" +  pivot + " i=" + i);
-        if(i != pivotIndex) {
+        if(i != pivotIndex) {  // swap pivot to be in between the two sections
             int temp = arr.get(i);
             arr.set(i, pivot);
             arr.set(pivotIndex, temp);
@@ -115,6 +116,7 @@ public class kwickSort {
         return i;
     }
 
+    // https://visualgo.net/en/sorting
     public void quickSort3(ArrayList<Integer> arr, int low, int high) {
         if(low < high) {
             int pi = partition(arr, low, high);
@@ -122,6 +124,47 @@ public class kwickSort {
             if(pi >= 0) {
                 quickSort3(arr, low, pi -1);
                 quickSort3(arr, pi +1, high);
+            }
+        }
+    }
+
+
+    // pivot is the last number,
+    // get two sections then place the pivot in the middle
+    public int partition(int[]arr, int low, int high) {
+        if(low < high){
+            int pivot = arr[high];
+            int i = low;
+
+            for(int j = low; j< high; j++) {
+                if(arr[j] <= pivot) {
+                    if(j != i) { //swap
+                        int temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                    i++;
+                }
+            }
+            if(i != high) {
+                int temp = arr[i];
+                arr[i] = pivot;
+                arr[high] = temp;
+            }
+            return i;
+        }
+        else {
+            return -1;
+        }
+    }
+
+    public void quickSort(int[] arr, int low, int high) {
+        if(low < high) {
+            int middle = partition(arr, low, high);
+
+            if(middle > -1) {
+                quickSort(arr, low, middle-1);
+                quickSort(arr, middle+1, high);
             }
         }
     }
@@ -136,6 +179,7 @@ public class kwickSort {
         System.out.println(arr);
         q.quickSort(arr, 0, arr.size()-1);
         System.out.println(arr);
+
 
         System.out.println("---------------quicksort 2---------------");
         ArrayList<Integer> arr2 = new ArrayList<>(Arrays.asList(100, 2, 1, 5, 70, 25, 15, 500));
@@ -207,6 +251,17 @@ public class kwickSort {
         q.quickSort3(arr12, 0, arr12.size()-1);
         System.out.println(arr12);
 
+        System.out.println("-----------------quick sort 3-------------");
+        ArrayList<Integer> arr14 = new ArrayList<>(Arrays.asList(100,1,5,15,3,4,7));
+        System.out.println(arr14);
+        q.quickSort3(arr14, 0, arr14.size()-1);
+        System.out.println(arr14);
+
+        System.out.println("-----------------quick sort int[] -------------");
+        int[]arr13 = {5, 1, 100, 55, 2, 3, 10};
+        q.printArray(arr13);
+        q.quickSort(arr13, 0, arr13.length-1);
+        q.printArray(arr13);
 
     }
 }
