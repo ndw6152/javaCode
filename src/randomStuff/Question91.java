@@ -1,6 +1,7 @@
 package randomStuff;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -68,7 +69,7 @@ public class Question91 {
     }
     /////////////////////////
 
-    public void permBackTrack(List<String> allSolution, StringBuilder solution, String str, boolean[]visited) {
+    public void permBackTrack(HashSet<String> allSolution, StringBuilder solution, String str, boolean[]visited) {
         if(solution.toString().length() == str.length()) {
             allSolution.add(solution.toString());
             return;
@@ -85,8 +86,8 @@ public class Question91 {
 
     }
 
-    public List<String> permutationStringUsingBackTrack(String str) {
-        List<String> result = new ArrayList<>();
+    public HashSet<String> permutationStringUsingBackTrack(String str) {
+        HashSet<String> result = new HashSet<>();
         if(str.length() == 0) {
             return result;
         }
@@ -103,19 +104,20 @@ public class Question91 {
 
         System.out.println("------");
         System.out.println(q.perm("ABC"));
-
         System.out.println("------");
         System.out.println(q.perm("123"));
-
         System.out.println("------");
         System.out.println(q.perm("112"));
-
+        System.out.println("------");
+        System.out.println(q.perm("AAA"));
+        System.out.println("--- using backtracking ---");
+        System.out.println(q.permutationStringUsingBackTrack("112"));
         System.out.println("------");
         System.out.println(q.permutationStringUsingBackTrack("123"));
         System.out.println("------");
-        System.out.println(q.permutationStringUsingBackTrack("112"));
-        System.out.println("------");
         System.out.println(q.permutationStringUsingBackTrack("ABC"));
+        System.out.println("------");
+        System.out.println(q.permutationStringUsingBackTrack("AAA"));
     }
 
 
