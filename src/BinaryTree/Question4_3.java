@@ -1,8 +1,10 @@
 package BinaryTree;
 
+import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Created by Anonealio on 7/23/2017.
@@ -40,6 +42,37 @@ public class Question4_3 {
         }
         return arr;
     }
+
+    // DFS to find an element
+    // Save child and save a new stack that has the current level
+    public int pathLengthFromRoot(Node root, int n1) {
+        Stack<Node> s = new Stack<>();
+        Stack<Integer> d = new Stack<>();
+
+        s.push(root);
+        d.push(1);
+
+        while (!s.isEmpty()) {
+            Node cur = s.pop();
+            Integer depth = d.pop();
+
+            if (cur.value == n1) {
+                return depth;
+            }
+
+            if(cur.left != null) {
+                s.push(cur.left);
+                d.push(depth + 1);
+            }
+            if(cur.right != null) {
+                s.push(cur.right);
+                d.push(depth + 1);
+            }
+        }
+        return 0;
+    }
+
+
 
     public void printLinkedListInArr(ArrayList<ArrayList<LinkListStuff.Node>> arr) {
         for(int i = 0; i < arr.size(); i++) {

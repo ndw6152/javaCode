@@ -146,7 +146,7 @@ public class kwickSort {
                     i++;
                 }
             }
-            if(i != high) {
+            if(i != high) {  // swap middle in between the two parts
                 int temp = arr[i];
                 arr[i] = pivot;
                 arr[high] = temp;

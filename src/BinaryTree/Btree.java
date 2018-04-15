@@ -287,16 +287,16 @@ public class Btree {
 
         tree.levelTraversal();
 
-        System.out.println("-------------");
+        System.out.println("--------inorder -----");
         tree.inOrderTraversal(start, true);
         System.out.println();
         tree.inOrderTraversal(start, false);
         System.out.println();
 
-        System.out.println("-------------");
+        System.out.println("--------preorder-----");
         tree.preOrderTraversal(start);
 
-        System.out.println("-------------");
+        System.out.println("--------postorder-----");
         tree.postOrderTraversal(start);
 
 

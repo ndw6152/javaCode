@@ -111,5 +111,7 @@ public class Test4 {
                             {'Q','S','E'}};
 
         System.out.println(test.getOutputWordsFromBoard(board));
+
+        System.out.println("1".compareTo("14"));
     }
 }

@@ -1,4 +1,3 @@
-package LeetCode;
 
 /**
  * Created by Anonealio on 8/29/2017.
