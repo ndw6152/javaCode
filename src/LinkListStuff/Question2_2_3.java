@@ -1,5 +1,8 @@
 package LinkListStuff;
 
+import java.util.Iterator;
+import java.util.TreeSet;
+
 /**
  * Created by Anonealio on 7/11/2017.
  */
@@ -75,6 +78,25 @@ public class Question2_2_3 {
         else{
             node.value = node.next.value;
             node.next = node.next.next;
+        }
+    }
+
+    public void testTreeSet() {
+        TreeSet<Integer> tree = new TreeSet<>();
+        tree.add(100);
+        tree.add(5);
+        tree.add(90);
+        tree.add(1);
+        tree.add(1000);
+
+        Iterator<Integer> iter = tree.iterator();
+        while(iter.hasNext()) {
+            System.out.println(iter.next());
+        }
+
+        Iterator<Integer> iter2 = tree.descendingIterator();
+        while(iter2.hasNext()) {
+            System.out.println(iter2.next());
         }
     }
 

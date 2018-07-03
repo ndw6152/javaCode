@@ -3,7 +3,7 @@
 ///**
 // * Created by Anonealio on 9/12/2017.
 // */
-//A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
+//A robot is located at the top-left corner of a m r n grid (marked 'Start' in the diagram below).
 //
 //        The robot can only move either down or right at any point in time.
 //        The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
@@ -12,15 +12,15 @@
 //
 //
 //        https://leetcode.com/static/images/problemset/robot_maze.png
-//        Above is a 3 x 7 grid. How many possible unique paths are there?
+//        Above is a 3 r 7 grid. How many possible unique paths are there?
 //
 //        Note: m and n will be at most 100.
 //
 //        9:52
 //
-//        [a,x,x,x,x,x]
-//        [x,c,x,x,x,x]
-//        [x,x,x,x,x,z]
+//        [a,r,r,r,r,r]
+//        [r,c,r,r,r,r]
+//        [r,r,r,r,r,z]
 //
 //        [a,b]
 //        [c,d]

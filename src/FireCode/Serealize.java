@@ -70,7 +70,7 @@ public class Serealize {
     public Node restore(ArrayList<String> array) {
         String cur = array.remove(0);
         System.out.println(cur);
-        if(cur == "null") {
+        if(cur.equals("null")) {
             return null;
         }
         Node curNode = new Node(Integer.parseInt(cur), null, null);
@@ -78,6 +78,45 @@ public class Serealize {
         curNode.right = restore(array);
         return curNode;
     }
+
+
+    // str = 1,2,3 or 1,*,2,*,*,3,4  it is always balanced
+    // make a string[] from string
+    // loop through array
+    // push each new node into the queue
+    // when popping, assign left and right if they exist move index by 2
+    public Node decompressTree(String str){
+        if(str.length() < 1) {
+            return null;
+        }
+        if(str.length() == 1 && str.equals("*")) {
+            return null;
+        }
+
+        String[] arr = str.split(",");
+
+        Node head = new Node(Integer.parseInt(arr[0]), null, null);
+        Node cur = head;
+        Queue<Node> q = new LinkedList<>();
+        q.add(cur);
+
+        for(int i =1; i < arr.length;) {
+            cur = q.poll();
+
+            if(cur != null) {
+                Node left = (arr[i]).equals("*") ? null: new Node(Integer.parseInt(arr[i]), null, null);
+                cur.left = left;
+                q.add(left);
+
+                Node right = (arr[i+1]).equals("*") ? null :new Node(Integer.parseInt(arr[i+1]), null, null);
+                cur.right = right;
+                q.add(right);
+            }
+            i+=2;
+        }
+        return head;
+    }
+
 
     public static void main(String[] args) {
         Serealize s = new Serealize();
@@ -102,5 +141,9 @@ public class Serealize {
         ArrayList<String> array3 = new ArrayList<>();
         Collections.addAll(array3, str3);
         Node root3 = s.restore((array3));
+
+
+        int[] arr2 = {1,2,3,4,5,6};
+
     }
 }

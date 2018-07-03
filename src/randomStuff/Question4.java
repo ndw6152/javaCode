@@ -1,6 +1,10 @@
 package randomStuff;
 
+import LeetCode.Solution46;
+
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
 /**
  * Created by Anonealio on 8/3/2017.
@@ -31,10 +35,12 @@ public class Question4 {
     }
 
     public static void main(String[] args) {
-        Question4 q= new Question4();
+        Question4 q = new Question4();
         Hashtable<String, Integer> table = q.createParentheses(2);
         q.printTable(table);
     }
+
+
 
 
 }

@@ -33,7 +33,12 @@ public class Question1_2 {
         Hashtable<Character, Integer> table = generateCountTable(str);
         Hashtable<Character, Integer> table2 = generateCountTable(str2);
 
+
         for(char key : table.keySet()) {
+
+            if(!table2.containsKey(key)) {
+                return false;
+            }
             if(!table.get(key).equals(table2.get(key))) { // checking if count of each characters is same in both strings
                 return false;
             }

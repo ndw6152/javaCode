@@ -76,4 +76,9 @@ class Solution216 {
         s.combinationSum3(3, 7);
 
     }
+
+
+    public static void mainn(String[] args) {
+
+    }
 }

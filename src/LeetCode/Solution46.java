@@ -9,8 +9,8 @@ import java.util.List;
  */
 public class Solution46 {
 
-    public void backTrack(List<List<Integer>> allSolutions,
-                          List<Integer> solution,
+    public void backTrack(ArrayList<ArrayList<Integer>> allSolutions,
+                          ArrayList<Integer> solution,
                           int[] nums,
                           boolean[] used) {
 
@@ -20,10 +20,7 @@ public class Solution46 {
         }
 
         for (int i = 0; i < nums.length; i++) {
-            if(used[i]) {
-                continue;
-            }
-            else {
+            if(!used[i]) {
                 solution.add(nums[i]);
                 used[i] = true;
                 backTrack(allSolutions, solution, nums, used);
@@ -33,8 +30,8 @@ public class Solution46 {
         }
     }
 
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> array = new ArrayList<>();
+    public ArrayList<ArrayList<Integer>> permute(int[] nums) {
+        ArrayList<ArrayList<Integer>> array = new ArrayList<>();
         if (nums.length == 0) {
             return array;
         }
@@ -46,6 +43,7 @@ public class Solution46 {
     public static void main(String[] args) {
         Solution46 s = new Solution46();
         int[] arr = {1,2,3};
-        s.permute(arr);
+        ArrayList<ArrayList<Integer>> result  = s.permute(arr);
+        System.out.println(result);
     }
 }

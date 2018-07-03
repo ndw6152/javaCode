@@ -10,7 +10,7 @@ import java.util.Queue;
  *     int val;
  *     TreeNode left;
  *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ *     TreeNode(int r) { val = r; }
  * }
  */
 class TreeNode {

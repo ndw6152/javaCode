@@ -17,6 +17,7 @@ public class Code4 {
         }
         return false;
     }
+
     public boolean isBST(Node root) {
         if(root == null) {
             return true;
