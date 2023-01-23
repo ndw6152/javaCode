@@ -9,20 +9,22 @@ import java.util.Iterator;
 import java.util.TreeSet;
 import java.util.stream.IntStream;
 
-class TrieNode {
-    Character c;
-    Boolean isLeaf = false;
-    HashMap<Character, TrieNode> children = new HashMap<>();
 
-    public TrieNode() {
-    }
-
-    public TrieNode(Character c) {
-        this.c = c;
-    }
-}
 
 class Trie {
+    class TrieNode {
+        Character c;
+        Boolean isLeaf = false;
+        HashMap<Character, TrieNode> children = new HashMap<>();
+
+        public TrieNode() {
+        }
+
+        public TrieNode(Character c) {
+            this.c = c;
+        }
+    }
+
     private TrieNode root;
 
     public Trie() {
@@ -47,6 +49,7 @@ class Trie {
         }
     }
 
+    // return true if the word is a leaf
     public Boolean searchWord(String word) {
         char[] arr = word.toCharArray();
         TrieNode cur = root;
@@ -60,6 +63,7 @@ class Trie {
         return cur.isLeaf;
     }
 
+    // returns true if the prefix is in a word in the dictionary
     public Boolean searchPrefix(String word) {
         char[] arr = word.toCharArray();
         TrieNode cur = root;

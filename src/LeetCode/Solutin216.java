@@ -60,7 +60,7 @@ class Solution216 {
             int start,
             int sum) {
         if (comb.size() == k && sum == 0) {
-            List<Integer> li = new ArrayList<Integer>(comb);
+            List<Integer> li = new ArrayList<>(comb);
             ans.add(li);
             return;
         }

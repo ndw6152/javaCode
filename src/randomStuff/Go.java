@@ -23,7 +23,7 @@ public class Go {
         } else if (board[r][c] != val) { // blocked by a different character
             return true;
         }
-        return checkPos(board, visited, r, c);
+        return checkPos(board, visited, r, c); // if same char, then checks that char's position
     }
 
     public boolean checkPos(int[][] board, boolean[][] visited, int r, int c) {
@@ -54,6 +54,38 @@ public class Go {
 
         return checkPos(board, visited, r, c);
     }
+
+
+    public static void main(String[] args) {
+        Go sol = new Go();
+
+        int[][] board =
+                {{0,0,2,0,0},
+                 {0,2,1,2,0},
+                 {0,0,2,2,1},
+                 {0,2,1,1,2},
+                 {0,0,2,2,1}};
+
+        System.out.println(sol.isCaptured(board, 0, 0) + " open position");
+        System.out.println(sol.isCaptured(board, 1, 2) + " surrounded on 4 sides");
+        System.out.println(sol.isCaptured(board, 3, 2) + " need to check the next pos to the right");
+        System.out.println(sol.isCaptured(board, 3, 3) + " need to check the next pos to the left");
+        System.out.println(sol.isCaptured(board, 4, 4) + " blocked by edge and other pieces");
+        System.out.println(sol.isCaptured(board, 2, 4) + " checking top, this has a gap so false");
+        System.out.println(sol.isCaptured(board, 5, 5) + " outside of board");
+        System.out.println(sol.isCaptured(board, 7, 7) + " outside of board");
+
+        System.out.println(sol.isCaptured(board, 2, 1) + " has gaps");
+
+
+
+
+        System.out.println(sol.solve(19,31, 17,4));
+        int[] a = {336465782, -278722862, -2145174067, 1101513929, 1315634022, -1369133069, 1059961393, 628175011, -1131176229, -859484421};
+        sol.maxset(a);
+    }
+
+
 
 
 
@@ -122,36 +154,5 @@ public class Go {
         }
         System.out.println(result);
         return result;
-    }
-
-
-
-    public static void main(String[] args) {
-        Go sol = new Go();
-
-        int[][] board =
-                {{0,0,2,0,0},
-                 {0,2,1,2,0},
-                 {0,0,2,2,1},
-                 {0,2,1,1,2},
-                 {0,0,2,2,1}};
-
-        System.out.println(sol.isCaptured(board, 0, 0) + " open position");
-        System.out.println(sol.isCaptured(board, 1, 2) + " surrounded on 4 sides");
-        System.out.println(sol.isCaptured(board, 3, 2) + " need to check the next pos to the right");
-        System.out.println(sol.isCaptured(board, 3, 3) + " need to check the next pos to the left");
-        System.out.println(sol.isCaptured(board, 4, 4) + " blocked by edge and other pieces");
-        System.out.println(sol.isCaptured(board, 2, 4) + " checking top, this has a gap so false");
-        System.out.println(sol.isCaptured(board, 5, 5) + " outside of board");
-        System.out.println(sol.isCaptured(board, 7, 7) + " outside of board");
-
-        System.out.println(sol.isCaptured(board, 2, 1) + " has gaps");
-
-
-        System.out.println(sol.solve(19,31, 17,4));
-
-
-        int[] a = {336465782, -278722862, -2145174067, 1101513929, 1315634022, -1369133069, 1059961393, 628175011, -1131176229, -859484421};
-        sol.maxset(a);
     }
 }

@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class Test4 {
 
+    StringBuilder sb = new StringBuilder();
     HashSet<String> set;
 
     public Test4() {

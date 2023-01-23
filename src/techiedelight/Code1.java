@@ -40,6 +40,8 @@ public class Code1 {
             else if(ch == 'L') {
                 currentDir = currentDir-1 <0 ? 3: currentDir -1;
             }
+
+            boolean flag = 'c' == 'c';
         }
 
         if(vertical != 0 || horizontal != 0) {

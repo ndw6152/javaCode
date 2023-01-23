@@ -1,5 +1,7 @@
 package LeetCode;
 
+import java.util.Arrays;
+
 /**
  * Created by Anonealio on 9/19/2017.
  * Longest palindromic substric in a string
@@ -73,6 +75,40 @@ public class Solution5 {
         return max;
     }
 
+
+    public String getPalindrome(String str, int start, int end) {
+        int low = start;
+
+        while(start >= 0 && end < str.length() && str.charAt(start) == str.charAt(end)) {
+            low = start;
+            start--;
+            end++;
+        }
+        return str.substring(low, end);
+    }
+
+    public String longestPalSubstr(String str){
+        if(str == null || str.length() ==0 ){
+            return "";
+        }
+        String maxStr = "";
+
+        String cur;
+        for(int i = 0; i <str.length(); i++) {
+            String s = getPalindrome(str, i,i);
+            String s2 = "";
+            if(i+1 < str.length()) {
+                s2 = getPalindrome(str, i, i+1);
+            }
+            cur = s.length() > s2.length() ? s: s2;
+            maxStr = cur.length() > maxStr.length() ? cur : maxStr;
+        }
+        return maxStr;
+    }
+
+
+
+
     public static void main(String[] args) {
         Solution5 s = new Solution5();
         System.out.println(s.longestPalindrome("ababc"));
@@ -83,5 +119,12 @@ public class Solution5 {
 
         System.out.println(s.longestPalindrome("abc"));
         System.out.println(s.longestLengthPalindrome("abc"));
+
+        System.out.println(s.longestPalSubstr("AABBCC"));
+        System.out.println(s.longestPalSubstr("cabac"));
+
+        char[] c = {'a','b','c'};
+        String ss = new String(c);
+        System.out.println(ss);
     }
 }

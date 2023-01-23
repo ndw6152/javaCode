@@ -1,6 +1,7 @@
 package randomStuff;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 /**
  * Created by ndw6152 on 6/28/2018.
@@ -15,7 +16,10 @@ public class RecoverIP {
             return;
         }
 
-        for(int i = 1; i+start <= str.length() && i <=3; i++) {
+        for(int i = 1; i <= 3; i++) {
+            if(i+start > str.length()) {
+                return;
+            }
             int val = Integer.parseInt(str.substring(start, start +i));
             if(val >=0 && val <= 255) {
                 if(val < 10 && i > 1) return; // take care of cases where it is 001, 01 etc
@@ -31,7 +35,8 @@ public class RecoverIP {
     }
 
 
-    public static ArrayList<String> generateIPAddrs(String str) {
+
+    public static String generateIPAddrs(String str) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         backTrack(result, new ArrayList<>(), str, 0);
 
@@ -40,12 +45,9 @@ public class RecoverIP {
 
     public static void main(String[] args) {
         String str = "1234";
-        System.out.println(str.substring(0,str.length()-1));
-        generateIPAddrs("12345");
 
-        generateIPAddrs("25525511135");
-
-        System.out.println(Integer.parseInt('2'+""));
+        System.out.println(generateIPAddrs("12345"));
+        System.out.println(generateIPAddrs("25525511135"));
 
     }
 }

@@ -1,9 +1,8 @@
 package BinaryTree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import randomStuff.HouseRobber3;
+
+import java.util.*;
 
 /**
  * Created by Anonealio on 6/13/2017.
@@ -351,6 +350,37 @@ public class Btree {
     }
 
 
+    public int getDepth(TreeNode root) {
+        if(root == null) {
+            return 0;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        Queue<Integer> depthQueue = new LinkedList<>();
+
+        queue.add(root);
+        depthQueue.add(1);
+        HashSet<TreeNode> visited = new HashSet<>();
+        visited.add(root);
+
+        while(!queue.isEmpty()) {
+            TreeNode cur = queue.poll();
+            int depth = depthQueue.poll();
+            System.out.println(depth + "\n");
+            if(visited.contains(cur)) {
+                continue;
+            }
+
+            if(cur != null) {
+                queue.add(root.left);
+                queue.add(root.right);
+                depthQueue.add(depth+1);
+                depthQueue.add(depth+1);
+            }
+        }
+
+        return 0;
+    }
+
 
 
     public static void main(String[] args) {
@@ -420,6 +450,7 @@ public class Btree {
         tree2.inOrderTraversal(start2, false);
         System.out.println("\n-------------");
         tree2.levelTraversal();
+
     }
 
 

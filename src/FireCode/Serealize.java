@@ -7,6 +7,8 @@ import java.util.*;
 
 public class Serealize {
 
+
+    // preorder serialize
     public String serialize(Node root) {
         if(root == null) {
             return "null";
@@ -17,7 +19,7 @@ public class Serealize {
         return root.value + "," + str + "," + str2;
 
     }
-
+    // preorder serealize
     public String serealizeTree(Node root) {
         if(root == null) {
             return "null";
@@ -137,6 +139,7 @@ public class Serealize {
 
 
         String result3 = (s.serialize(root1));
+        System.out.println("result3: " + result3);
         String[] str3 = str.split(",");
         ArrayList<String> array3 = new ArrayList<>();
         Collections.addAll(array3, str3);
